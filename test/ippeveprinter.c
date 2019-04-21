@@ -65,7 +65,7 @@ extern char **environ;
 
 #include "printer-png.h"
 
-
+#undef HAVE_SSL
 /*
  * Constants...
  */
@@ -1483,9 +1483,9 @@ create_printer(
     fprintf(stderr, "printer-more-info=\"%s\"\n", adminurl);
     fprintf(stderr, "printer-supply-info-uri=\"%s\"\n", supplyurl);
 #ifdef HAVE_SSL
-    fprintf(stderr, "printer-uri=\"%s\"\n", uri);
-#else
     fprintf(stderr, "printer-uri=\"%s\",\"%s\"\n", uri, securi);
+#else
+    fprintf(stderr, "printer-uri=\"%s\"\n", uri);
 #endif /* HAVE_SSL */
   }
 
